@@ -7,6 +7,7 @@ import jp.co.cyberagent.android.gpuimage.GPUImageGrayscaleFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageMonochromeFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageDirectionalSobelEdgeDetectionFilter;
+import jp.co.cyberagent.android.gpuimage.GPUImageSobelEdgeDetection;
 import jp.co.cyberagent.android.gpuimage.GPUImage3x3TextureSamplingFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImage3x3ConvolutionFilter;
 
@@ -177,8 +178,11 @@ public class GPUImageViewProxy extends TiViewProxy
 			else if( AndroidModule.GRAYSCALE_FILTER.equals(filterType) ){
 				gpuImage.setFilter(new GPUImageGrayscaleFilter());
 			}
-			else if( AndroidModule.DIRECTIONAL_SOBEL_EDGE_DETECTION_FILETER.equals(filterType) ){
+			else if( AndroidModule.DIRECTIONAL_SOBEL_EDGE_DETECTION_FILTER.equals(filterType) ){
 				gpuImage.setFilter(new GPUImageDirectionalSobelEdgeDetectionFilter());
+			}
+			else if( AndroidModule.SOBEL_EDGE_DETECTION_FILTER.equals(filterType) ){
+				gpuImage.setFilter(new GPUImageSobelEdgeDetection());
 			}
             else if( AndroidModule.THREE_X_THREE_CONVOLUTION_FILTER.equals(filterType)){
 				gpuImage.setFilter(new GPUImage3x3ConvolutionFilter(kernel));

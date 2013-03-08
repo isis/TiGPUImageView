@@ -27,7 +27,8 @@ public class AndroidModule extends KrollModule
 	@Kroll.constant public static final String SEPIA_FILTER = "sepia";
 	@Kroll.constant public static final String MONOCHROME_FILTER = "monochrome";
 	@Kroll.constant public static final String GRAYSCALE_FILTER = "grayscale";
-	@Kroll.constant public static final String DIRECTIONAL_SOBEL_EDGE_DETECTION_FILETER = "directional_sobel_edge_detection";
+	@Kroll.constant public static final String DIRECTIONAL_SOBEL_EDGE_DETECTION_FILTER = "directional_sobel_edge_detection";
+	@Kroll.constant public static final String 	SOBEL_EDGE_DETECTION_FILTER = "sobel_edge_detection";
 	@Kroll.constant public static final String 	THREE_X_THREE_CONVOLUTION_FILTER = "3x3convolution";
 
 	// You can define constants with @Kroll.constant, for example:
