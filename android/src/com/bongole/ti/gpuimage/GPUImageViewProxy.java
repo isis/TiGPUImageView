@@ -7,6 +7,8 @@ import jp.co.cyberagent.android.gpuimage.GPUImageGrayscaleFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageMonochromeFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageDirectionalSobelEdgeDetectionFilter;
+import jp.co.cyberagent.android.gpuimage.GPUImage3x3TextureSamplingFilter;
+import jp.co.cyberagent.android.gpuimage.GPUImage3x3ConvolutionFilter;
 
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiBlob;
@@ -15,6 +17,7 @@ import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.proxy.TiViewProxy;
 import org.appcelerator.titanium.view.TiDrawableReference;
 import org.appcelerator.titanium.view.TiUIView;
+import org.appcelerator.titanium.util.TiConvert;
 
 import ti.modules.titanium.ui.TableViewProxy;
 import ti.modules.titanium.ui.widget.TiImageView;
@@ -40,6 +43,8 @@ public class GPUImageViewProxy extends TiViewProxy
 	private Bitmap bitmap;
 	private Bitmap originalBitmap;
 	private ArrayList<TiDrawableReference> imageSources;
+	private float[] kernel = new float[9];
+	
 
 	public GPUImageViewProxy()
 	{
@@ -175,6 +180,9 @@ public class GPUImageViewProxy extends TiViewProxy
 			else if( AndroidModule.DIRECTIONAL_SOBEL_EDGE_DETECTION_FILETER.equals(filterType) ){
 				gpuImage.setFilter(new GPUImageDirectionalSobelEdgeDetectionFilter());
 			}
+            else if( AndroidModule.THREE_X_THREE_CONVOLUTION_FILTER.equals(filterType)){
+				gpuImage.setFilter(new GPUImage3x3ConvolutionFilter(kernel));
+			}
 			else{
 				v.setImage(this.originalBitmap);
 				return;
@@ -185,5 +193,13 @@ public class GPUImageViewProxy extends TiViewProxy
 			v.setImage(b);
 		}
 	}
+	@Kroll.setProperty @Kroll.method
+    public void setKernel(Object[] kernelElements){
+        if (9 <= kernelElements.length) {
+            for (int i = 0; i < 9; ++i) {
+                kernel[i] = TiConvert.toFloat(kernelElements[i]);
+            }
+        }
+    }
 }
 
