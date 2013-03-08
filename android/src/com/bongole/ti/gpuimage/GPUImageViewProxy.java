@@ -6,6 +6,7 @@ import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageGrayscaleFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageMonochromeFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
+import jp.co.cyberagent.android.gpuimage.GPUImageDirectionalSobelEdgeDetectionFilter;
 
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiBlob;
@@ -170,6 +171,9 @@ public class GPUImageViewProxy extends TiViewProxy
 			}
 			else if( AndroidModule.GRAYSCALE_FILTER.equals(filterType) ){
 				gpuImage.setFilter(new GPUImageGrayscaleFilter());
+			}
+			else if( AndroidModule.DIRECTIONAL_SOBEL_EDGE_DETECTION_FILETER.equals(filterType) ){
+				gpuImage.setFilter(new GPUImageDirectionalSobelEdgeDetectionFilter());
 			}
 			else{
 				v.setImage(this.originalBitmap);

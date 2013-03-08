@@ -27,6 +27,7 @@ public class AndroidModule extends KrollModule
 	@Kroll.constant public static final String SEPIA_FILTER = "sepia";
 	@Kroll.constant public static final String MONOCHROME_FILTER = "monochrome";
 	@Kroll.constant public static final String GRAYSCALE_FILTER = "grayscale";
+	@Kroll.constant public static final String DIRECTIONAL_SOBEL_EDGE_DETECTION_FILETER = "directional_sobel_edge_detection";
 
 	// You can define constants with @Kroll.constant, for example:
 	// @Kroll.constant public static final String EXTERNAL_NAME = value;
@@ -43,27 +44,6 @@ public class AndroidModule extends KrollModule
 		// put module init code that needs to run when the application is created
 	}
 
-	// Methods
-	@Kroll.method
-	public String example()
-	{
-		Log.d(LCAT, "example called");
-		return "hello world";
-	}
-	
-	// Properties
-	@Kroll.getProperty
-	public String getExampleProp()
-	{
-		Log.d(LCAT, "get example property");
-		return "hello world";
-	}
-	
-	
-	@Kroll.setProperty
-	public void setExampleProp(String value) {
-		Log.d(LCAT, "set example property: " + value);
-	}
 
 }
 
